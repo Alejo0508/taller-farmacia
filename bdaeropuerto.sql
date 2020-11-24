@@ -116,22 +116,22 @@ alter table piloto drop column telefono
 
 ----------------------- usar el inner join-------------------------------
 
---- saber el tipo de avion, la placa del vuelo a berlin
+--- saber el tipo de avion, la placa y desde donde y cuando sale el vuelo a Moscu
 select nombre_avion, placa_avion, destino, origen,hora_deter from avion
 
 inner join vuelo  on avion.placa_avion = vuelo.placa_avion1
 
-where destino = 'berlin'
+where destino = 'Moscu'
 
 
----saber el piloto que esta volando el avion a Moscu
+---saber el piloto que esta volando el avion a berlin
 select nombre_avion, placa_avion, destino, origen,hora_deter, nombrepiloto from avion
 inner join vuelo  on avion.placa_avion = vuelo.placa_avion1
 
 inner join piloto_vuelo on piloto_vuelo.ide_vuelo1 = vuelo.ide_vuelo
 inner join piloto on piloto.ide_piloto = piloto_vuelo.ide_piloto1
 
-where destino = 'Moscu'
+where destino = 'berlin'
 
 
 ---saber el piloto que esta volando el avion a bogota y que tripulacion va con el
@@ -148,7 +148,7 @@ inner join tripulacion on tripulacion.ide_tripulacion = tripulacion_vuelo.ide_tr
 where destino = 'bogota'
 
 
----saber el piloto que esta volando el avion a berlin y que tripulacion va con el y en que base estaba el avion
+---saber el piloto que esta volando el avion a san andres y que tripulacion va con el y en que base estaba el avion
 select nombre_avion, placa_avion, destino, origen,hora_deter, nombrepiloto, nombre, nombre_base from avion
 
 inner join vuelo  on avion.placa_avion = vuelo.placa_avion1
@@ -162,4 +162,5 @@ inner join tripulacion on tripulacion.ide_tripulacion = tripulacion_vuelo.ide_tr
 inner join  avion_base on avion_base.placa_avion1 = avion.placa_avion
 inner join base on base.ide_base = avion_base.ide_base1
 
-where destino = 'berlin'
+where destino = 'san andres'
+
